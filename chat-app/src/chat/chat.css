@@ -1,0 +1,101 @@
+
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to bottom right,
+    rgba(252, 203, 144, 1),
+    rgba(213, 126, 235, 1)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to bottom right,
+    rgba(252, 203, 144, 1),
+    rgba(213, 126, 235, 1)
+  );
+
+  .mask-custom {
+    background: rgba(24, 24, 16, 0.2);
+    border-radius: 2em;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+  }
+  
+  .chat-detail {
+    height: 300px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+  }
+  .chat-list {
+    height: 400px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+  }
+  .scrollable-div:hover {
+    overflow: auto; /* Show the scrollbar on hover */
+  }
+
+  /* Define scrollbar width and color */
+  .scrollable-div::-webkit-scrollbar {
+    width: 12px; /* You can adjust this value for the scrollbar width */
+  }
+
+  .scrollable-div::-webkit-scrollbar-thumb {
+    background-color: rgba(
+      213,
+      126,
+      235,
+      1
+    ); /* Color of the thumb (the draggable part) */
+    border-radius: 6px; /* Rounded corners of the thumb */
+  }
+
+  .scrollable-div::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the track (the non-draggable part) */
+  }
+
+  /* For Firefox */
+  .scrollable-div {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(213, 126, 235, 1) #f1f1f1; /* thumb color, track color */
+  }
+
+  /* For IE and Edge */
+  .scrollable-div {
+    -ms-overflow-style: none; /* Hide the scrollbar */
+  }
+
+  .scrollable-div::-ms-scrollbar-thumb {
+    background-color: rgba(213, 126, 235, 1); /* Color of the thumb */
+  }
+
+  .scrollable-div::-ms-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the track */
+  }
+
+  /* Show scrollbar on hover */
+  .scrollable-div:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(213, 126, 235, 1);
+  }
+
+  .scrollable-div:hover::-webkit-scrollbar-track {
+    background-color: #e0e0e0;
+  }
+
+  .scrollable-div:hover {
+    scrollbar-color: rgba(213, 126, 235, 1) #e0e0e0;
+  }
+
+  /* Smooth scrolling behavior */
+  .scrollable-div {
+    scroll-behavior: smooth;
+  }
+
+ 
+}
