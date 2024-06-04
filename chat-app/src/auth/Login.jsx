@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import Form from "react-bootstrap/Form";
 import { login } from "../services/ApiServices";
+import { Notification } from "../utils/Notification";
 const Login = () => {
   const navigate = useNavigate();
 
@@ -40,10 +41,16 @@ const Login = () => {
                     onSubmit={async (values) => {
                       try {
                         const resp = await login(values);
-                        if (resp) {
+                        if (resp?.data?.status === 200) {
+                          Notification(resp?.data?.message, "success");
+
                           navigate("/chat");
+                        } else {
+                          Notification(resp?.data?.message, "error");
                         }
                       } catch (error) {
+                        Notification(resp?.data?.message, "error");
+
                         console.log("error", error);
                       }
                     }}

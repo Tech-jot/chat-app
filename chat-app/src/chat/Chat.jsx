@@ -1,4 +1,4 @@
-  import {
+import {
   MDBContainer,
   MDBRow,
   MDBCol,
@@ -25,13 +25,16 @@ export default function Chat() {
   const getUsers = async () => {
     try {
       const resp = await getUsersApi();
-      if (resp?.data) {
-        setUsers(resp?.data?.data);
+      if (resp?.data?.status === 200) {
+        console.log('resp?.data?.data', resp?.data?.data)
+
+        setUsers(resp?.data?.data?.data);
       }
     } catch (error) {
       console.log("error", error);
     }
   };
+
   return (
     <MDBContainer fluid className="py-5 gradient-custom">
       <MDBRow>
@@ -47,7 +50,7 @@ export default function Chat() {
                   ? users?.map((data) => {
                       return (
                         <li
-                          className="p-2 border-bottom"c
+                          className="p-2 border-bottom"
                           style={{
                             borderBottom:
                               "1px solid rgba(255,255,255,.3) !important",
@@ -66,7 +69,9 @@ export default function Chat() {
                               />
                               <div className="pt-1">
                                 <p className="fw-bold mb-0">
-                                  {`${data?.firstName} ${data?.lastName}`}{" "}
+                                  {`${data?.firstName ?? "John"} ${
+                                    data?.lastName ?? "Smith"
+                                  }`}{" "}
                                 </p>
                                 <p className="small text-white">
                                   Hello, Are you there?

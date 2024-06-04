@@ -20,6 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+const socketIo = require('socket.io');
+
 const server = http.createServer(app);
 mongoose.connect(
   "mongodb://localhost:27017/demo", 
@@ -54,6 +56,28 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+const io = socketIo(server, {
+  cors: {
+    origin: "http://localhost:5173", // React app origin
+    methods: ["GET", "POST"]
+  }
+});
+
+io.on('connection', (socket) => {
+  console.log('New client connected');
+
+  socket.on('message', (data) => {
+    console.log(`Message from client: ${data}`);
+    io.emit('message', `Server received: ${data}`);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
+  });
+});
+
 
 module.exports = app;
 

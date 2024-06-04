@@ -14,6 +14,7 @@ router.get("/", function (req, res, next) {
  */
 router.post("/register", AUTH_CONTROLLER.register);
 router.post("/login", AUTH_CONTROLLER.login);
+router.get("/get-users", AUTH_CONTROLLER.getUser);
 
 /**
  * Routes for Employees
